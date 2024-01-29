@@ -63,10 +63,12 @@
 }
 
 .detail-box {
-  padding: 20px;
+  padding: 8px;
   border-radius: 10px;
   border-color: #3498db;
   width: 700px;
+  margin-left: auto;
+  margin-right: auto;
   justify-content: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
