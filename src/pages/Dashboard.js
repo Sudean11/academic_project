@@ -6,6 +6,12 @@ import PostDetail from '../components/NewPost/PostDetail';
 function Dashboard(props) {
 
     const [selectedPost, setSelectedPost] = useState(null);
+    const [updatedPost, setUpdatedPost] = useState(null);
+
+    const revertUpdatedPost = () =>{
+        setUpdatedPost(null);
+    }
+
 
     const postDetail = () => {
         if(selectedPost != null){
@@ -17,12 +23,14 @@ function Dashboard(props) {
         setSelectedPost(post);
         console.log("selectedPost is not null")
     }
+    
 
     return (
+        
         <div className = "main-container">
             Welcome to WAA
-            <Posts setPostFromChild = {setPostFromChild}/>
-            <UpdateTitle></UpdateTitle>
+            <Posts setPostFromChild = {setPostFromChild} updatedPost={updatedPost} selectedPost = {selectedPost} revertUpdatedPost = {revertUpdatedPost}/>
+            <UpdateTitle updatedPost = {setUpdatedPost}></UpdateTitle>
             {postDetail()}
         </div>
     );
