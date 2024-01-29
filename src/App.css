@@ -85,3 +85,9 @@
 .hover-element {
   cursor: pointer;
 }
+
+.update-title {
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}

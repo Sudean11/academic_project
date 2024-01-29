@@ -15,8 +15,8 @@ function UpdateTitle(props) {
     }
 
     return (
-        <div>
-            <div>Update Post</div>
+        <div className='update-title'>
+            <div>Update Title</div>
             <div><input value={typedValue} onChange={handleChangeEvent}></input></div>
             <div><button onClick={updatePostTitle}>Update</button></div>
         </div>

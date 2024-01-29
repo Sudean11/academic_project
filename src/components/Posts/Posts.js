@@ -9,7 +9,7 @@ function Posts(props) {
   ]);
   
   useEffect(()=>{
-    if(props.updatedPost != null){
+    if(props.updatedPost != null && props.selectedPost != null){
       let newPost = postState.map((post)=>
           post.id === props.selectedPost.id ? {...post, title: props.updatedPost} : post
         );

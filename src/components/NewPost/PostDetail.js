@@ -11,9 +11,7 @@ function PostDetail(props) {
       <div>
         {props?.post?.author}
       </div>
-      <div>
-        {props?.post?.title}
-      </div>
+
       <div>
         {props?.post?.content}
       </div>
