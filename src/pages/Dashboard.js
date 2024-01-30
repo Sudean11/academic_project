@@ -14,9 +14,7 @@ function Dashboard(props) {
 
 
     const postDetail = () => {
-        if(selectedPost != null){
             return <PostDetail post={selectedPost}></PostDetail>
-        }
     }
 
     const setPostFromChild=(post)=>{

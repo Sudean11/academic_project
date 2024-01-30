@@ -1,9 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
+import {updateSelectedPost} from "./../../redux/actions";
 
-function PostCard(props) {
+const PostCard =(props)=> {
   const cardClicked = () => {
-
-    props.setPostFromChild(props.post);
+    props.updateSelectedPost(props.post);
   };
   return (
       <div className="info-box hover-element" onClick={cardClicked}>
@@ -13,4 +14,10 @@ function PostCard(props) {
   );
 }
 
-export default PostCard;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateSelectedPost: post => dispatch(updateSelectedPost(post))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(PostCard) ;

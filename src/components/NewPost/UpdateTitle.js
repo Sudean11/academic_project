@@ -1,5 +1,7 @@
 import { type } from '@testing-library/user-event/dist/type';
 import React, { useState } from 'react';
+import { updatePostTitle } from '../../redux/actions';
+import { connect } from 'react-redux';
 
 function UpdateTitle(props) {
 
@@ -10,17 +12,23 @@ function UpdateTitle(props) {
         console.log(event.target.value)
     }
 
-    const updatePostTitle=()=>{
-        props.updatedPost(typedValue);
+    const updatePost=()=>{
+        props.updatePostTitle(typedValue);
     }
 
     return (
         <div className='update-title'>
             <div>Update Title</div>
             <div><input value={typedValue} onChange={handleChangeEvent}></input></div>
-            <div><button onClick={updatePostTitle}>Update</button></div>
+            <div><button onClick={updatePost}>Update</button></div>
         </div>
     );
 }
 
-export default UpdateTitle;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updatePostTitle: title => dispatch(updatePostTitle(title))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(UpdateTitle);
