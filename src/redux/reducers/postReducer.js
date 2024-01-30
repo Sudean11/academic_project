@@ -34,9 +34,14 @@ const postReducer = (state = initialState, action) => {
       const updatedPosts = state.posts.map((post) =>
         post.id === postId ? { ...post, title: action.payload } : post
       );
+      const updatedSelectedPost = {
+        ...state.selectedPost,
+        title: action.payload,
+      };
       return {
         ...state,
         posts: updatedPosts,
+        selectedPost: updatedSelectedPost,
       };
     default:
       return state;
