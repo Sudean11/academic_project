@@ -43,6 +43,8 @@ const postReducer = (state = initialState, action) => {
         posts: updatedPosts,
         selectedPost: updatedSelectedPost,
       };
+    case "SETUP_POST":
+      return {...state, posts: action.payload};
     default:
       return state;
   }

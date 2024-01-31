@@ -1,10 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import {updateSelectedPost} from "./../../redux/actions";
+import { fetchService } from "../../services/apiService";
+import { fetchPostById } from "../../services/postService/postService";
 
 const PostCard =(props)=> {
-  const cardClicked = () => {
-    props.updateSelectedPost(props.post);
+  const cardClicked = async() => {
+    fetchPostById(props.post.id);
   };
   return (
       <div className="info-box hover-element" onClick={cardClicked}>

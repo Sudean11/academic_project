@@ -1,10 +1,16 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { deletebyPostId } from "../../services/postService/postService";
 
 const PostDetail = ({ selectedPost }) => {
   useEffect(() => {
     console.log(selectedPost)
   }, [selectedPost]);
+
+
+  const deleteOperation=()=>{
+    deletebyPostId(selectedPost.id);
+  }
 
   if (selectedPost == null) {
     return <div></div>;
@@ -18,6 +24,9 @@ const PostDetail = ({ selectedPost }) => {
         </div>
         <div>{selectedPost.author}</div>
         <div>{selectedPost?.content}</div>
+        <div className="delete-button">
+          <button onClick={deleteOperation}>Delete</button>
+        </div>
       </div>
     );
   }

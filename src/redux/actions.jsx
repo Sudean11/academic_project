@@ -24,3 +24,9 @@ export const updateSelectedPost = (post) =>{
     };
 }
 
+export const setupPost = (post) =>{
+    return {
+        type: "SETUP_POST",
+        payload: post
+    }
+}
