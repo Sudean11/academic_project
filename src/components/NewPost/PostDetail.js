@@ -1,9 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { connect } from "react-redux";
 import { deletebyPostId } from "../../services/postService/postService";
 import { Button } from "react-bootstrap";
+import { SelectedPostContext } from "../../context/Context";
 
 const PostDetail = ({ selectedPost }) => {
+
+  
+
   useEffect(() => {
     console.log(selectedPost)
   }, [selectedPost]);
@@ -20,7 +24,7 @@ const PostDetail = ({ selectedPost }) => {
       <div className="detail-box">
         <div>
           <h3>
-            <u>MIU</u>
+            <u>MIU  </u>
           </h3>
         </div>
         <div>{selectedPost.author}</div>

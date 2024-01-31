@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { setupPost } from "../../redux/actions";
 import { fetchPosts } from "../../services/postService/postService";
 
-const Posts = ({ posts, setupPost }) => {
+const Posts = ({ posts, setupPost}) => {
   useEffect(() => {
     fetchPosts();
   }, []);
@@ -13,7 +13,8 @@ const Posts = ({ posts, setupPost }) => {
     return (
       <PostCard
         key={singlePost.id}
-        post={singlePost}></PostCard>
+        post={singlePost}
+        ></PostCard>
     );
   });
 
