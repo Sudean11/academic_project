@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { deletebyPostId } from "../../services/postService/postService";
+import { Button } from "react-bootstrap";
 
 const PostDetail = ({ selectedPost }) => {
   useEffect(() => {
@@ -25,7 +26,7 @@ const PostDetail = ({ selectedPost }) => {
         <div>{selectedPost.author}</div>
         <div>{selectedPost?.content}</div>
         <div className="delete-button">
-          <button onClick={deleteOperation}>Delete</button>
+          <Button className="btn-danger" onClick={deleteOperation}>Delete</Button>
         </div>
       </div>
     );

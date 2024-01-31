@@ -2,6 +2,7 @@ import { type } from "@testing-library/user-event/dist/type";
 import React, { useState } from "react";
 import { updatePostTitle } from "../../redux/actions";
 import { connect } from "react-redux";
+import { Button } from "react-bootstrap";
 
 function UpdateTitle(props) {
   const [typedValue, setTypedValue] = useState("");
@@ -24,7 +25,7 @@ function UpdateTitle(props) {
           onChange={handleChangeEvent}></input>
       </div>
       <div>
-        <button onClick={updatePost}>Update</button>
+        <Button variant="primary" onClick={updatePost}>Update</Button>
       </div>
     </div>
   );
