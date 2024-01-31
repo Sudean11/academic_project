@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { fetchUsers, saveUser } from "../../services/userService/userService";
+import { fetchPosts } from "../../services/postService/postService";
 
 const AddNewPost = ({ onAddPost }) => {
   useEffect(() => {
@@ -33,13 +34,15 @@ const AddNewPost = ({ onAddPost }) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    saveUser({
+    await saveUser({
       ...formData,
       user_id: selectedOption,
     });
+
+    fetchPosts();    
 
     setFormData({
       title: "",
