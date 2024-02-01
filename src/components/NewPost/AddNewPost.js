@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { fetchUsers, saveUser } from "../../services/userService/userService";
@@ -8,6 +8,8 @@ const AddNewPost = ({ onAddPost }) => {
   useEffect(() => {
     fetchUsersFunction();
   }, []);
+
+  const formValues = useRef();
 
   const fetchUsersFunction = async () => {
     let users = await fetchUsers();
@@ -26,19 +28,21 @@ const AddNewPost = ({ onAddPost }) => {
   const [dropdownOptions, setDropdownOptions] = useState([]);
   const [selectedOption, setSelectedOption] = useState("");
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+ 
 
   const handleSubmit = async (e) => {
+    console.log(formValues.current);
+    const a = formValues.current;
+    const data = {
+      title: a['title'].value,
+      author: a['author'].value,
+      content: a['content'].value
+  };
+  console.log(data);
     e.preventDefault();
 
     await saveUser({
-      ...formData,
+      ...data,
       user_id: selectedOption,
     });
 
@@ -81,7 +85,7 @@ const AddNewPost = ({ onAddPost }) => {
           <Modal.Title>Create New Post</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={handleSubmit}>
+          <Form ref={formValues} onSubmit={handleSubmit}>
             <Form.Group controlId="dropdown">
               <Form.Label>Dropdown</Form.Label>
               <Form.Control
@@ -109,9 +113,8 @@ const AddNewPost = ({ onAddPost }) => {
               <Form.Label>Title</Form.Label>
               <Form.Control
                 type="text"
+                label= "title"
                 name="title"
-                value={formData.title}
-                onChange={handleInputChange}
                 required
               />
             </Form.Group>
@@ -120,8 +123,7 @@ const AddNewPost = ({ onAddPost }) => {
               <Form.Control
                 as="textarea"
                 name="content"
-                value={formData.content}
-                onChange={handleInputChange}
+                
                 required
               />
             </Form.Group>
@@ -130,8 +132,7 @@ const AddNewPost = ({ onAddPost }) => {
               <Form.Control
                 type="text"
                 name="author"
-                value={formData.author}
-                onChange={handleInputChange}
+                
                 required
               />
             </Form.Group>
